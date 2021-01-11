@@ -15,3 +15,7 @@
 ### Support Starter
 
 springfox-boot-starter
+
+### Support Webflux
+
+Spring 5, Webflux support (only request mapping support, functional endpoints aren't supported yet)
