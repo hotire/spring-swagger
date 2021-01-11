@@ -8,4 +8,6 @@
 
 - https://github.com/springfox/springfox/releases
 
-### Starter
+### Support Starter
+
+springfox-boot-starter
