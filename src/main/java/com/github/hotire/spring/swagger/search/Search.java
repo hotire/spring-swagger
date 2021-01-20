@@ -1,4 +1,4 @@
-package com.github.hotire.spring.swagger;
+package com.github.hotire.spring.swagger.search;
 
 import java.util.Collections;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package com.github.hotire.spring.swagger;
+package com.github.hotire.spring.swagger.search;
 
 import java.util.Optional;
 
@@ -7,7 +7,6 @@ import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
-
 
 public class SearchHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver  {
     private static final String DEFAULT_PARAMETER = "search";
