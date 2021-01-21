@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.hotire.spring.swagger.search.Search;
+import com.github.hotire.spring.swagger.search.SearchArgument;
 
 @RequestMapping("/dev")
 @RestController
@@ -17,13 +18,14 @@ public class DevController {
     }
 
     @GetMapping("/search")
-    public String search(Search search) {
+    public String search(@SearchArgument Search search) {
         return search.toString();
     }
 
     @GetMapping("{id}")
     public String path(@PathVariable String id, Search search) {
-        return id;
+        System.out.println(search);
+        return search.toString();
     }
 
 }

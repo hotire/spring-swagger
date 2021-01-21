@@ -9,6 +9,9 @@ import com.fasterxml.classmate.ResolvedType;
 import com.fasterxml.classmate.TypeResolver;
 
 import lombok.extern.slf4j.Slf4j;
+import springfox.documentation.schema.CollectionType;
+import springfox.documentation.schema.ScalarType;
+import springfox.documentation.service.ParameterType;
 import springfox.documentation.service.RequestParameter;
 import springfox.documentation.service.ResolvedMethodParameter;
 import springfox.documentation.spi.DocumentationType;
@@ -40,7 +43,13 @@ public class SearchOperationBuilderPlugin implements OperationBuilderPlugin {
                                                                                context,
                                                                                index++);
 
-//                requestParameters.add();
+                requestParameters.add(parameterContext.requestParameterBuilder()
+                                                      .in(ParameterType.QUERY)
+                                                      .query(q -> q.model(m -> m.collectionModel(cb -> cb.collectionType(CollectionType.ARRAY)
+                                                                                                         .model(mb -> mb.scalarModel(ScalarType.STRING)))))
+                                                      .description("Search criteria in the format: key,value")
+                                                      .name("search")
+                                                      .build());
             }
 
         context.operationBuilder().requestParameters(requestParameters);
