@@ -16,11 +16,10 @@ import springfox.documentation.swagger2.web.WebMvcSwaggerTransformationFilter;
 public class CustomWebMvcSwaggerTransformationFilter implements WebMvcSwaggerTransformationFilter {
     @Override
     public Swagger transform(SwaggerTransformationContext<HttpServletRequest> context) {
-        Swagger swagger = context.getSpecification();
-        context.getSpecification().getPaths().forEach((s, path) -> {
-            path.getOperations().forEach(it -> it.getParameters().sort(Comparator.comparing(Parameter::getIn)));
-        });
-        return swagger;
+        context.getSpecification()
+               .getPaths()
+               .forEach((__, path) -> path.getOperations().forEach(it -> it.getParameters().sort(Comparator.comparing(Parameter::getIn))));
+        return context.getSpecification();
     }
 
     @Override
