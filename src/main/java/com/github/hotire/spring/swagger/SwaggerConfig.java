@@ -1,16 +1,20 @@
 package com.github.hotire.spring.swagger;
 
+import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.fasterxml.classmate.TypeResolver;
 import com.github.hotire.spring.swagger.search.Search;
 
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.builders.RequestParameterBuilder;
+import springfox.documentation.schema.AlternateTypeRule;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.schema.ScalarType;
 import springfox.documentation.service.Parameter;
@@ -25,8 +29,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
     @Bean
-    public Docket api() {
+    public Docket api(TypeResolver typeResolver) {
         return new Docket(DocumentationType.SWAGGER_2).globalRequestParameters(List.of(requestParameter(), requestParameter2(), requestParameter3()))
+                                                      .alternateTypeRules(new AlternateTypeRule(typeResolver.resolve(Map.class, String.class, OffsetDateTime.class), typeResolver.resolve(Map.class, String.class, String.class)))
                                                       .ignoredParameterTypes(Search.class)
                                                       .select()
                                                       .apis(RequestHandlerSelectors.any())

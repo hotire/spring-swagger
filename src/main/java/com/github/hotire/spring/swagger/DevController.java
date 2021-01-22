@@ -1,5 +1,8 @@
 package com.github.hotire.spring.swagger;
 
+import java.time.OffsetDateTime;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +29,11 @@ public class DevController {
     public String path(@PathVariable String id, Search search) {
         System.out.println(search);
         return search.toString();
+    }
+
+    @GetMapping("offset")
+    public Map<String, OffsetDateTime> offsetDateTime() {
+        return Map.of("", OffsetDateTime.now());
     }
 
 }
