@@ -12,6 +12,10 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.swagger2.web.SwaggerTransformationContext;
 import springfox.documentation.swagger2.web.WebMvcSwaggerTransformationFilter;
 
+/**
+ * Change the order of requestParameters
+ *
+ */
 @Component
 public class CustomWebMvcSwaggerTransformationFilter implements WebMvcSwaggerTransformationFilter {
     @Override
