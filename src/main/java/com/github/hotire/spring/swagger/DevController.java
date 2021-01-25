@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,11 +27,11 @@ public class DevController {
     }
 
     @GetMapping("{id}")
-    public String path(@PathVariable String id, Search search) {
+    public String path(@PathVariable(required = false) String id, Search search, @RequestHeader(required = true) String header) {
         System.out.println(search);
         return search.toString();
     }
-
+    
     @GetMapping("offset")
     public Map<String, OffsetDateTime> offsetDateTime() {
         return Map.of("", OffsetDateTime.now());
