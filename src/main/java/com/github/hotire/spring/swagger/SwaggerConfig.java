@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.fasterxml.classmate.TypeResolver;
 import com.github.hotire.spring.swagger.search.Search;
@@ -27,6 +29,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
+    @Bean
+    public WebMvcConfigurer legacySwaggerApi() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addViewControllers(ViewControllerRegistry registry) {
+                registry.addRedirectViewController("/swagger-ui.html", "/swagger-ui/");
+            }
+        };
+    }
 
     @Bean
     public Docket api(TypeResolver typeResolver) {
