@@ -24,10 +24,9 @@ import springfox.documentation.service.ParameterType;
 import springfox.documentation.service.RequestParameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
-@EnableSwagger2
+//@EnableSwagger2
 public class SwaggerConfig {
 
     @Bean
@@ -42,13 +41,14 @@ public class SwaggerConfig {
 
     @Bean
     public Docket api(TypeResolver typeResolver) {
-        return new Docket(DocumentationType.SWAGGER_2).globalRequestParameters(List.of(requestParameter(), requestParameter2(), requestParameter3()))
-                                                      .alternateTypeRules(new AlternateTypeRule(typeResolver.resolve(Map.class, String.class, OffsetDateTime.class), typeResolver.resolve(Map.class, String.class, String.class)))
-                                                      .ignoredParameterTypes(Search.class)
-                                                      .select()
-                                                      .apis(RequestHandlerSelectors.any())
-                                                      .paths(PathSelectors.ant("/v1/**").or(PathSelectors.ant("/dev/**")))
-                                                      .build();
+        return new Docket(DocumentationType.SWAGGER_2)
+                .globalRequestParameters(List.of(requestParameter(), requestParameter2(), requestParameter3()))
+                .alternateTypeRules(new AlternateTypeRule(typeResolver.resolve(Map.class, String.class, OffsetDateTime.class), typeResolver.resolve(Map.class, String.class, String.class)))
+                .ignoredParameterTypes(Search.class)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.ant("/v1/**").or(PathSelectors.ant("/dev/**")))
+                .build();
 
     }
 

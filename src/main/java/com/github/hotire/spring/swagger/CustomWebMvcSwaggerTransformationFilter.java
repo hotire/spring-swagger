@@ -18,6 +18,7 @@ import springfox.documentation.swagger2.web.WebMvcSwaggerTransformationFilter;
  */
 @Component
 public class CustomWebMvcSwaggerTransformationFilter implements WebMvcSwaggerTransformationFilter {
+
     @Override
     public Swagger transform(SwaggerTransformationContext<HttpServletRequest> context) {
         context.getSpecification()

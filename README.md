@@ -19,3 +19,8 @@ springfox-boot-starter
 ### Support Webflux
 
 Spring 5, Webflux support (only request mapping support, functional endpoints aren't supported yet)
+
+
+### Migrating from Swagger 2.x to Swagger 3.0.0 (SpringFox 3.0.0 Release Notes)
+
+https://blog.naver.com/gngh0101/222221196335
